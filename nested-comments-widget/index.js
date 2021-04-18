@@ -14,16 +14,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
 },false);
 
 var getCommentTemplate = (comment) => {
-    console.log(comment);
     let id=comment.id;
     let listEle=`
         <li id="comment-${id}">
             <div id="description">
-                <span>${comment.username}</span>
-                <span>${comment.lastUpdated.toISOString()}</span>
+                <a href="#">@${comment.username}</a>
+                <span>${comment.lastUpdated.toISOString().slice(0,10)}</span>
             </div>
             <p>${comment.comment}</p>
-            <div id="Action-items>
+            <div id="actions">
                 <button>Reply</button>
             </div>
         </li>
@@ -36,7 +35,8 @@ var renderComments = () =>{
     commentArr.forEach(comment=>{
         commentList+=getCommentTemplate(comment);
     });
-    document.getElementById("comment-list").innerHTML=commentList;
+    console.log(commentList);
+    document.getElementById("commentList").innerHTML=commentList;
 };
 
 var addComment= (name, username,comment) => {

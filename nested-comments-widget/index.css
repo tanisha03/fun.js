@@ -3,3 +3,60 @@
     padding: 0;
     margin: 0;
 }
+
+a {
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input,
+textarea {
+    margin: 8px 4px;
+    padding: 2px;
+}
+
+textarea {
+    width: 400px;
+}
+
+button {
+    float: right;
+    padding: 4px;
+}
+
+ul {
+    list-style: none;
+}
+
+h2 {
+    margin-top: 16px;
+}
+
+li {
+    margin: 8px 0;
+    padding: 16px;
+    background-color: aliceblue;
+    width: 400px;
+}
+
+#description {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+#actions {
+    margin-top: 8px;
+}
+
+li button {
+    background-color: transparent;
+    border: 0;
+    color: blue;
+    float: none;
+}
