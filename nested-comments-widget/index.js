@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 document.getElementById(`comment-${commentID}`).innerHTML+=childHTML;
             }
             else{
-                childList.innerHTML=inputEle=childList.innerHTML;
+                childList.innerHTML=inputEle+childList.innerHTML;
             }
         }
         else if(ActionID==="addReply"){
