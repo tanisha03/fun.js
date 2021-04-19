@@ -8,6 +8,10 @@ a {
     text-decoration: none;
 }
 
+button {
+    cursor: pointer;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -59,4 +63,5 @@ li button {
     border: 0;
     color: blue;
     float: none;
+    cursor: pointer;
 }
