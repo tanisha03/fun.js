@@ -4,25 +4,39 @@ const draggables = document.querySelectorAll(".taskCard");
 draggables.forEach(ele=>{
     ele.addEventListener("dragstart", ()=>{
         ele.classList.add('dragging');
-        console.log("dagstart");
     });
 
     ele.addEventListener("dragend", ()=>{
         ele.classList.remove('dragging');
-        console.log("dragend");
     });
 });
 
 container.forEach(ele=>{
     ele.addEventListener("dragover",(e)=>{
         e.preventDefault();
-        console.log(e);
         const afterEle = getEleAfterDrag(ele, e.clientY);
-        const draggingEle=document.querySelector('.dragging');
-        ele.querySelector('ul').appendChild(draggingEle);
+        console.log(afterEle);
+        if(afterEle){
+            const draggingEle=document.querySelector('.dragging');
+            ele.querySelector('ul').insertBefore(draggingEle,afterEle.element);
+        }
+        else{
+            ele.querySelector('ul').appendChild(draggingEle);
+        }
     })
 });
 
 function getEleAfterDrag(container,y){
-    const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')];
+    const draggableElements = [...container.querySelectorAll('.taskCard:not(.dragging)')];
+    
+    return draggableElements.reduce((closest, ele)=>{
+        const eleVal=ele.getBoundingClientRect();
+        const distance = y - (eleVal.top + eleVal.height/2);
+        if(distance<0){
+            if(distance<closest.dist) return {dist:distance, element:ele};
+            return closest;
+        }
+        return closest;
+    },{dist:Number.MAX_VALUE, element:null});
+
 }
